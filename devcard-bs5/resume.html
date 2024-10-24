@@ -89,7 +89,7 @@
 					</div>-->
 
 					<div class="my-5">
-						<h6>Visitor Count: <span class="badge text-bg-secondary">123</span></h6>
+						<h6>Visitor Count: <span class="badge text-bg-secondary" id="visitorCount"></span></h6>
 					</div>					
 	
 					<!--<div class="dark-mode-toggle text-center w-100">
@@ -486,9 +486,19 @@
 			<script src="assets/js/dark-mode.js"></script>
 
 			<!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
-			<!--<script src="assets/js/demo/style-switcher.js"></script>-->     
+			<!--<script src="assets/js/demo/style-switcher.js"></script>-->   
 			
-
+			<script>		
+				var count = 0;
+						
+				fetch('https://funccrcjencsharp.azurewebsites.net/api/VisitorCountHttpTrigger?code=3YxEhgDQiLOh1zOGd6sfOehYju09OLYJnLaRIzF2DI_tAzFu9DOWRA%3D%3D')
+				.then(res => res.json())
+				.then(res => {						
+					count = res.count;
+					document.getElementById('visitorCount').innerText = count;
+				});						
+			</script>
+			
 		</body>
 		</html> 
 

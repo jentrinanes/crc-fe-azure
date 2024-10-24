@@ -89,7 +89,7 @@
 					</div>-->
 					
 					<div class="my-5">
-						<h6>Visitor Count: <span class="badge text-bg-secondary">123</span></h6>
+						<h6>Visitor Count: <span class="badge text-bg-secondary" id="visitorCount"></span></h6>
 					</div>
 	
 					<!--<div class="dark-mode-toggle text-center w-100">
@@ -109,9 +109,9 @@
 	    <section class="cta-section theme-bg-light py-5">
 		    <div class="container single-col-max-width">
 			    <h2 class="heading text-center">About Cloud Resume Challenge</h2>
-			    <div class="project-intro text-center">
+			    <!--<div class="project-intro text-center">
 					<p class="mb-0 lead">Project intro goes here. In the intro it's a good idea to answer a potential client's need/problem so it's more likely to land your next project or job.</p>
-				</div>
+				</div>-->
 			    
 		    </div><!--//container-->
 	    </section>
@@ -145,14 +145,26 @@
 				<div class="project-sections py-5">
 					<div class="project-section mb-5">
 					    <h3 class="project-section-title mb-3">Project Overview</h3>
-					    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. </p>
+					    <p>This website is inspired by the Cloud Resume Challenge book by Forest Brazeal.</p>
 					</div><!--//project-section-->
 					
 					<div class="project-section mb-5">
-					     <h3 class="project-section-title">The Challenge</h3>
-					    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. </p>
+					     <h3 class="project-section-title">The Frontend</h3>
+					     <p>
+							The frontend simply consists of HTML, Bootstrap CSS and JavaScript. 
+							It is hosted as a Static Website in an Azure Storage. I used Azure CDN to efficiently deliver content and Azure-managed SSL certificate for security.
+						</p>
 					     
 					</div><!--//project-section-->
+
+					<div class="project-section mb-5">
+						<h3 class="project-section-title">The Backend</h3>
+						<p>
+							I created a simple Azure Cosmos DB with a single collection and a single document. 
+							Then I developed an Azure Function to read the document from the Cosmos DB and return it as a JSON object.
+					    </p>
+						
+				   </div><!--//project-section-->
 					
 					<div class="project-section mb-5">
 					     <h3 class="project-section-title">The Approach &amp; Solution</h3>
@@ -278,9 +290,19 @@
 	<script src="assets/js/dark-mode.js"></script>
 
     <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
-    <!--<script src="assets/js/demo/style-switcher.js"></script>-->     
+    <!--<script src="assets/js/demo/style-switcher.js"></script>-->   
+	
+	<script>		
+		var count = 0;
+				
+		fetch('https://funccrcjencsharp.azurewebsites.net/api/VisitorCountHttpTrigger?code=3YxEhgDQiLOh1zOGd6sfOehYju09OLYJnLaRIzF2DI_tAzFu9DOWRA%3D%3D')
+		.then(res => res.json())
+		.then(res => {						
+			count = res.count;
+			document.getElementById('visitorCount').innerText = count;
+		});						
+	</script>
     
-
 </body>
 </html> 
 
