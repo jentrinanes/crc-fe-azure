@@ -48,4 +48,5 @@ jobs:
             --account-name sacrcjen \
             --source './devcard-bs5/' \
             --destination '$web' \
-            --overwrite                      
+            --pattern '*.html'
+            --overwrite true                      
