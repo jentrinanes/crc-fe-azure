@@ -49,4 +49,4 @@ jobs:
             --source './devcard-bs5/' \
             --destination '$web' \
             --pattern '*.html'
-            --overwrite true                      
+            --overwrite                      
