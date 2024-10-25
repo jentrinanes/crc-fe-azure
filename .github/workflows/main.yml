@@ -49,5 +49,5 @@ jobs:
             --account-key ${{ secrets.AZURE_STORAGE_ACCOUNT_KEY }} \
             --source './devcard-bs5/' \
             --destination '$web' \
-            --pattern '*.html'
-            --overwrite=True                      
+            --pattern '*.html' \
+            --overwrite                      
