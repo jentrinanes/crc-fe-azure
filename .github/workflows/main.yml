@@ -46,6 +46,7 @@ jobs:
           inlineScript: |
             az storage blob upload-batch \
             --account-name sacrcjen \
+            --account-key ${{ secrets.AZURE_STORAGE_ACCOUNT_KEY }}
             --source './devcard-bs5/' \
             --destination '$web' \
             --pattern '*.html'
