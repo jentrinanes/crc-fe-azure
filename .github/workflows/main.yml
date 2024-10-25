@@ -50,4 +50,16 @@ jobs:
             --source './devcard-bs5/' \
             --destination '$web' \
             --pattern '*.html' \
-            --overwrite                      
+            --overwrite   
+
+      # Step 4: Purge Azure CDN Endpoint
+      - name: Purge Azure CDN Endpoint
+        uses: azure/cli@v2
+        with: 
+          azcliversion: latest
+          inlineScript: |
+            az cdn endpoint purge \
+              --resource-group rg-cloud-resume-challenge \
+              --profile-name cdn-crc-jen \
+              --name cdncrcjen.azureedge.net \
+              --content-paths '/*'            
