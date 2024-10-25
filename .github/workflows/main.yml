@@ -1,4 +1,4 @@
-name: Run Azure CLI Login with OpenID Connect
+name: Deploy to Azure Storage and Purge CDN
 on: [push]
 
 permissions:
@@ -20,5 +20,10 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
-          az account show
-          # You can write your Azure CLI inline scripts here.
+          # az account show
+          # Upload files to Azure Storage $web folder
+            az storage blob upload-batch \
+              --account-name sacrcjen \
+              --source 'D:\Jen\Projects\crc-fe-azure\devcard-bs5' \
+              --destination '$web' \
+              --overwrite
