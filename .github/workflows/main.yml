@@ -46,6 +46,6 @@ jobs:
           inlineScript: |
             az storage blob upload-batch \
             --account-name sacrcjen \
-            --source 'D:\Jen\Projects\crc-fe-azure\devcard-bs5\' \
+            --source './devcard-bs5/' \
             --destination '$web' \
             --overwrite                      
